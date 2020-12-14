@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:see_gpa_generator/bloc/history/history_bloc.dart';
 import 'package:see_gpa_generator/bloc/result/result_bloc.dart';
-import 'package:see_gpa_generator/bloc/subject/subject_bloc.dart';
 import 'package:see_gpa_generator/models/result_model.dart';
+import 'package:see_gpa_generator/screens/result_page/expanded_flat_button.dart';
+import 'package:see_gpa_generator/screens/result_page/save_dialog.dart';
 import 'package:see_gpa_generator/shared/constant.dart';
-import 'package:see_gpa_generator/widgets/result/expanded_flat_button.dart';
 
-const kButtonTextStyle = const TextStyle(fontSize: 18.0);
+
+
 
 class ResultSheet extends StatelessWidget {
-  final OurSubjectState subjectState;
-  ResultSheet({this.subjectState});
+  void _onSaveButtonPress(BuildContext context) {
+    showDialog(context: context, builder: (context) => SaveDialog());
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ResultBloc, ResultState>(
-      builder: (context, state) {
-        ResultModel result = (state as OurResultState).result;
+      builder: (context, resultState) {
+        ResultModel result = (resultState as OurResultState).result;
         return Column(
           children: <Widget>[
             Expanded(
@@ -45,17 +47,12 @@ class ResultSheet extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           result.gradePoint.toStringAsFixed(2),
-                          style: const TextStyle(
-                            fontSize: 60.0,
-                            fontWeight: FontWeight.w900,
-                          ),
+                          style: kResultSheetGradePointStyle,
                         ),
                         kWidthBox10,
                         Text(
                           "(${result.grade})",
-                          style: const TextStyle(
-                            fontSize: 30.0,
-                          ),
+                          style: kResultSheetGradeStyle,
                         ),
                       ],
                     ),
@@ -68,14 +65,27 @@ class ResultSheet extends StatelessWidget {
               child: Row(
                 children: <Widget>[
                   ExpandedFlatbutton(
+                    color: kSaveButtonColor,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      _onSaveButtonPress(context);
+                    },
+                    child: const Text(
+                      'Save',
+                      style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10.0,
+                  ),
+                  ExpandedFlatbutton(
+                    color: kTileColor,
                     onPressed: () {
                       Navigator.pop(context);
-                      BlocProvider.of<HistoryBloc>(context).add(GenerateHistory(
-                          subject: subjectState, result: state));
                     },
                     child: const Text(
                       'OK',
-                      style: kButtonTextStyle,
+                      style: kResultSheetButtonTextStyle,
                     ),
                   ),
                 ],

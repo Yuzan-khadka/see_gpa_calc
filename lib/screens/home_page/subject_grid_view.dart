@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:see_gpa_generator/bloc/subject/subject_bloc.dart';
-import 'package:see_gpa_generator/widgets/home/subject_card.dart';
+import 'package:see_gpa_generator/screens/home_page/subject_card.dart';
 
 class SubjectGridView extends StatelessWidget {
   const SubjectGridView({

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:see_gpa_generator/shared/constant.dart';
 import 'package:see_gpa_generator/widgets/app_drawer.dart';
-import 'package:see_gpa_generator/widgets/home/calculate_button.dart';
-import 'package:see_gpa_generator/widgets/home/subject_grid_view.dart';
+import 'package:see_gpa_generator/screens/home_page/calculate_button.dart';
+import 'package:see_gpa_generator/screens/home_page/subject_grid_view.dart';
 
 class HomeScreen extends StatelessWidget {
   static const String route = 'home';

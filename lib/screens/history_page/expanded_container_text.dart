@@ -16,7 +16,7 @@ class ExpandedContainerText extends StatelessWidget {
         child: Text(
       text,
       textAlign: TextAlign.center,
-      style: TextStyle(color: header ? Colors.green : Colors.white),
+      style: TextStyle(color: header ? Colors.green : Colors.black),
     ));
   }
 }

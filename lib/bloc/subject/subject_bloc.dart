@@ -23,6 +23,9 @@ class SubjectBloc extends Bloc<SubjectEvent, SubjectState> {
         yield* _incrementMarks(state, event.index, event.incrementBy);
       } else if (event is MarksDecrement) {
         yield* _decrementMarks(state, event.index, event.decrementBy);
+      }else if (event is SetSubjects){
+        yield OurSubjectState(subjects: event.subjectFromHistory);
+      
       }
     }
   }

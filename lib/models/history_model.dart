@@ -1,30 +1,51 @@
-import 'package:see_gpa_generator/bloc/result/result_bloc.dart';
-import 'package:see_gpa_generator/bloc/subject/subject_bloc.dart';
+import 'package:see_gpa_generator/models/result_model.dart';
+import 'package:see_gpa_generator/models/subject_model.dart';
 
 class HistoryModel {
-  final OurSubjectState subjects;
-  final OurResultState result;
+  int id;
+  final String name;
+  final List<SubjectModel> subjects;
+  final ResultModel result;
   final DateTime dateTime;
   bool isExpanded;
 
   HistoryModel(
-      {this.subjects, this.result, this.dateTime, this.isExpanded = false});
+      {this.name, this.subjects, this.result, this.dateTime, this.isExpanded});
 
   Map<String, dynamic> toMap() {
     return {
-      'subjectState': subjects,
-      'resultState': result,
-      'dateTime': dateTime,
+      'name': name,
+      'subjects': subjects.map((subject) => subject.toMap()).toList(),
+      'result': result.toMap(),
+      'dateTime': dateTime.toIso8601String(),
       'isExpanded': isExpanded
     };
   }
 
-  static HistoryModel fromMap(Map<String, dynamic> map) {
+  factory HistoryModel.fromMap(Map<String, dynamic> map) {
     return HistoryModel(
-      subjects: map['subjectState'],
-      result: map['resultState'],
-      dateTime: map['dateTime'],
+      name: map['name'],
+      subjects: map['subjects']
+          .map((subject) => SubjectModel.fromMap(subject))
+          .toList()
+          .cast<SubjectModel>(),
+      result: ResultModel.fromMap(map['result']),
+      dateTime: DateTime.tryParse(map['dateTime']),
       isExpanded: map['isExpanded'],
     );
   }
+
+  // HistoryModel copyWith({
+  //   List<SubjectModel> subjects,
+  //   ResultModel result,
+  //   DateTime dateTime,
+  //   bool isExpanded,
+  // }) {
+  //   return HistoryModel(
+  //     subjects: subjects ?? this.subjects,
+  //     result: result ?? this.result,
+  //     dateTime: dateTime ?? this.dateTime,
+  //     isExpanded: isExpanded ?? this.isExpanded,
+  //   );
+  // }
 }

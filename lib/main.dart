@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:see_gpa_generator/bloc/history/history_bloc.dart';
 import 'package:see_gpa_generator/bloc/subject/subject_bloc.dart';
-import 'package:see_gpa_generator/screens/history_screen.dart';
-import 'package:see_gpa_generator/screens/home_screen.dart';
-import 'package:see_gpa_generator/screens/method_screen.dart';
+import 'package:see_gpa_generator/screens/history_page/history_screen.dart';
+import 'package:see_gpa_generator/screens/home_page/home_screen.dart';
+import 'package:see_gpa_generator/screens/method_page/method_screen.dart';
 import 'package:see_gpa_generator/shared/constant.dart';
 
 import 'bloc/result/result_bloc.dart';
@@ -24,16 +23,16 @@ class MyApp extends StatelessWidget {
         BlocProvider<ResultBloc>(
           create: (context) => ResultBloc(),
         ),
-        BlocProvider<HistoryBloc>(
-          create: (context) => HistoryBloc(),
-        ),
       ],
       child: MaterialApp(
         title: 'SEE GPA CALCULATOR',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark().copyWith(
-          primaryColor: kPrimaryColor,
-          scaffoldBackgroundColor: kPrimaryColor,
+        theme: ThemeData.light().copyWith(
+           primaryColor: kPrimaryColor,
+           scaffoldBackgroundColor: kScaffoldColor,
+          primaryTextTheme: TextTheme(
+            headline6: TextStyle(color: Colors.white),
+          ),
         ),
         initialRoute: HomeScreen.route,
         routes: {

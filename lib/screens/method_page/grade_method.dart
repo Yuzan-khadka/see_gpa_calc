@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:see_gpa_generator/screens/method_page/table_parts.dart';
 import 'package:see_gpa_generator/shared/constant.dart';
-import 'package:see_gpa_generator/widgets/method/table_parts.dart';
+
 
 class GradeMethod extends StatelessWidget {
   @override

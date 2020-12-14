@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:see_gpa_generator/bloc/subject/subject_bloc.dart';
 import 'package:see_gpa_generator/models/subject_model.dart';
 import 'package:see_gpa_generator/shared/constant.dart';
-import 'package:see_gpa_generator/widgets/home/change_button.dart';
+import 'package:see_gpa_generator/screens/home_page/change_button.dart';
 
 class SubjectCard extends StatelessWidget {
   const SubjectCard({
@@ -11,7 +11,6 @@ class SubjectCard extends StatelessWidget {
     @required this.subject,
     @required this.index,
     this.subjectState,
-
   }) : super(key: key);
 
   final SubjectModel subject;
@@ -21,6 +20,9 @@ class SubjectCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.0),
+      ),
       color: kTileColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

@@ -25,3 +25,12 @@ class MarksDecrement extends SubjectEvent {
   @override
   List<Object> get props => [index, decrementBy];
 }
+
+class SetSubjects extends SubjectEvent{
+  final List<SubjectModel> subjectFromHistory;
+
+  SetSubjects({this.subjectFromHistory});
+
+   @override
+  List<Object> get props => [subjectFromHistory];
+}

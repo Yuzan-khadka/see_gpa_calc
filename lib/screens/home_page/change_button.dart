@@ -32,10 +32,24 @@ class _ChangeButtonState extends State<ChangeButton> {
       child: Container(
         constraints: const BoxConstraints.tightFor(width: 40.0, height: 40.0),
         decoration: BoxDecoration(
-          color: kButtonColor,
-          shape: BoxShape.circle,
+            color: kButtonColor,
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12,
+                offset: Offset(2, 6),
+                blurRadius: 5,
+              ),
+              BoxShadow(
+                color: Colors.black12,
+                offset: Offset(0, 0),
+                blurRadius: 2,
+              ),
+            ]),
+        child: Icon(
+          widget.icon,
+          color: Color(0xFF58627D),
         ),
-        child: Icon(widget.icon),
       ),
     );
   }

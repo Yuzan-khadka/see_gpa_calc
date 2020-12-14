@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:see_gpa_generator/screens/method_page/table_parts.dart';
 import 'package:see_gpa_generator/shared/constant.dart';
-import 'package:see_gpa_generator/widgets/method/table_parts.dart';
+
 
 class GpaMethod extends StatelessWidget {
   @override
@@ -27,7 +28,7 @@ class GpaMethod extends StatelessWidget {
                       margin: const EdgeInsets.only(bottom: 2.0),
                       decoration: const BoxDecoration(
                         border: Border(
-                          bottom: BorderSide(color: Colors.white),
+                          bottom: BorderSide(color: Colors.black),
                         ),
                       ),
                       child: const Text('Sum of Grade Points'),
